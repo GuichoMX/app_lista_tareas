@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Header from './componentes/header';
+import FormularioTareas from './componentes/FormularioTareas';
+import ListaTareas from './componentes/ListaTareas';
 
-function App() {
+const App = () => {
+  const [tareas, cambiarTareas] = useState(
+    [
+      {
+        id: 1,
+        texto: 'Lavar la ropa',
+        completada: false
+      },
+      {
+        id: 2,
+        texto: 'Grabar tutorial',
+        completada: true
+      }
+    ]
+  );
+
+  console.log(tareas);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="contenedor">
+      <Header/>
+      <FormularioTareas tareas={tareas} cambiarTareas={cambiarTareas}/>
+      <ListaTareas tareas={tareas} cambiarTareas={cambiarTareas}/>
     </div>
   );
 }
